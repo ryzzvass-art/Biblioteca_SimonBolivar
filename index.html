@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca de Proyectos · Instituto Simón Bolívar</title>
+<meta name="description" content="Biblioteca digital de proyectos de grado del Instituto Simón Bolívar, El Alto, Bolivia.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="cursor-glow" id="cg"></div>
+<section class="hero">
+  <div class="crest">SB</div>
+  <p class="eyebrow">Instituto Simón Bolívar · El Alto, Bolivia</p>
+  <h1>Biblioteca de<br><em>Proyectos</em></h1>
+  <p class="sub">El conocimiento técnico de nuestros egresados, reunido en un solo lugar. Explore los proyectos de grado de Mecánica Automotriz y Autotrónica.</p>
+  <a href="biblioteca.html" class="btn btn-gold">Ingresar a la biblioteca <span>→</span></a>
+  <div class="hero-stats">
+    <div><b data-count="58">0</b><span>Proyectos</span></div>
+    <div><b data-count="2">0</b><span>Carreras</span></div>
+    <div><b data-count="2026">0</b><span>Gestión</span></div>
+  </div>
+  <div class="hero-foot">Técnico Superior · Defensa de Grado</div>
+</section>
+<div class="marquee"><div class="marquee-track" id="mq"></div></div>
+<script>
+const cg=document.getElementById('cg');
+addEventListener('mousemove',e=>{cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px'});
+const words=['Mecánica Automotriz','Autotrónica','Técnico Superior','Instituto Simón Bolívar','El Alto · La Paz','Proyectos de Grado'];
+document.getElementById('mq').innerHTML=[...words,...words,...words,...words].map(w=>`<span>${w} ◆</span>`).join('');
+document.querySelectorAll('[data-count]').forEach(el=>{
+  const t=+el.dataset.count,s=performance.now(),d=1600;
+  (function f(n){const p=Math.min((n-s)/d,1);el.textContent=Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(s);
+});
+</script>
+</body></html>

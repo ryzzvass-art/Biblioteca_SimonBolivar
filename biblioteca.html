@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca · Instituto Simón Bolívar</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="cursor-glow" id="cg"></div>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="logo">Simón<i>·</i>Bolívar</a>
+  <a href="index.html" class="back">← Inicio</a>
+</div></nav>
+
+<header class="lib-head">
+  <p class="eyebrow">Biblioteca digital</p>
+  <h1>Proyectos de <em>Grado</em></h1>
+  <p>Consulte los proyectos defendidos por nuestros estudiantes. Los documentos están disponibles únicamente para lectura en línea.</p>
+</header>
+
+<div class="tools">
+  <label class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="Buscar por título, estudiante o vehículo…" autocomplete="off">
+  </label>
+  <div class="chips" id="chips"></div>
+  <select id="sort" aria-label="Ordenar">
+    <option value="autor">Estudiante (A–Z)</option>
+    <option value="titulo">Título (A–Z)</option>
+    <option value="fecha">Fecha de defensa</option>
+  </select>
+</div>
+<div class="count" id="count"></div>
+<main class="grid" id="grid"></main>
+<footer class="footer">© 2026 Instituto Simón Bolívar · El Alto, Bolivia</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="panel">
+    <button class="close" id="close" aria-label="Cerrar">×</button>
+    <aside class="side" id="side"></aside>
+    <div class="viewer" id="viewer"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="assets/app.js"></script>
+</body></html>
