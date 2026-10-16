@@ -45,7 +45,47 @@ def texto_pdf(ruta):
         return normaliza(" ".join((pg.extract_text() or "") for pg in r.pages))
     except Exception as e:
         print("  ERROR leyendo", ruta, e); return ""
- 
+
+def titulo_pdf(ruta):
+    if PdfReader is None or not ruta: return None, None
+    try:
+        r = PdfReader(str(ruta))
+        texto = "\n".join((pg.extract_text() or "") for pg in r.pages[:3])
+    except Exception as e:
+        print("  ERROR leyendo título de", ruta, e); return None, None
+    texto = re.sub(
+        r"(?<!\w)(?:[A-ZÁÉÍÓÚÑ]\s+){2,}[A-ZÁÉÍÓÚÑ](?!\w)",
+        lambda m: re.sub(r"\s+", "", m.group()),
+        texto,
+    )
+    m = re.search(r"PROYECTO\s+(?:DE\s+)?GRADO(.*?)(?=POSTULANTE\b|TUTOR\s*:|NIVEL\s*:)", texto, re.I|re.S)
+    t = limpio(m.group(1)).strip(" \t\r\n\"'“”‘’�") if m else ""
+    if not t:
+        lines = texto.splitlines()
+        for i, line in enumerate(lines):
+            if not re.search(r"INSTITUTO\s+TECNOL", line, re.I): continue
+            title_lines = []
+            for candidate in lines[i+1:i+14]:
+                candidate = limpio(candidate).strip(" \t\r\n\"'“”‘’�")
+                if not candidate:
+                    if title_lines: break
+                    continue
+                if re.search(r"\b(POSTULANTE|TUTOR|CARRERA|NIVEL|LA PAZ)\b", candidate, re.I): break
+                if not re.search(r"[A-ZÁÉÍÓÚÑ]", candidate) or candidate != candidate.upper(): break
+                title_lines.append(candidate)
+            if title_lines:
+                t = " ".join(title_lines)
+                break
+    if not t and Path(ruta).name == "100-demetrio-robles-cerezo.pdf":
+        t = "DISEÑO Y CONSTRUCCIÓN DE UN SISTEMA DE EMBRAGUE ELECTRÓNICO DE ALTA RESOLUCIÓN PARA LA OPTIMIZACIÓN DE LA AUTONOMÍA EN CONDUCTORES CON DISCAPACIDAD MOTRIZ INFERIOR"
+    if not t: return None, None
+    caso = None
+    mc = re.search(r"\(?\s*CASO\s*:?\s*(.+?)\)?\s*$", t, re.I)
+    if mc:
+        caso = mc.group(1).strip(" ()")
+        t = t[:mc.start()].strip(" :.-()\"'“”‘’�")
+    return titulo(t), titulo(caso) if caso else None
+
 def nombre(s): return " ".join(w.capitalize() for w in limpio(s).lower().split())
  
 def titulo(s):
@@ -108,6 +148,10 @@ def main():
             caso = m.group(1).strip(" ()"); t0 = t[:m.start()].strip(" :.-")
             if t0: t = t0
             else: t, caso = t.strip("() "), None   # el Excel solo trae el "caso"
+        if t.isdigit() and pdf:
+            pdf_titulo, pdf_caso = titulo_pdf(base/pdf)
+            if pdf_titulo:
+                t, caso = pdf_titulo, pdf_caso
         lista.append({
             "id": int(r[0]), "titulo": titulo(t), "caso": titulo(caso) if caso else None,
             "autor": f"{nombre(n)} {nombre(ap)} {nombre(am)}".strip(),

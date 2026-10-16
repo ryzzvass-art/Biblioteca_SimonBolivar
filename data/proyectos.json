@@ -1,8 +1,8 @@
 [
  {
   "id": 64,
-  "titulo": "13550482",
-  "caso": null,
+  "titulo": "Construccion de un banco de diagnostico para el analisis del sistema de control electronico en motores de inyeccion electronica de gasolina",
+  "caso": "Motor 1NZ Toyota",
   "autor": "Alan Calle Yujra",
   "nombres": "Alan",
   "apellidos": "Calle Yujra",
@@ -18,7 +18,7 @@
  },
  {
   "id": 65,
-  "titulo": "8359037",
+  "titulo": "Construcción de una estación de trabajo para soldadura de gas inerte metalico (MIG) con control de iluminación y extracción de gases contaminantes aplicada al área automotriz",
   "caso": null,
   "autor": "Aldo Wilson Calle Paredes",
   "nombres": "Aldo Wilson",
@@ -35,8 +35,8 @@
  },
  {
   "id": 89,
-  "titulo": "10064944",
-  "caso": null,
+  "titulo": "Implementación de un sistema de diagnóstico y simulación de fallas electricas en motores a gasolina mendiante el escaner automotriz thinkdiag 2",
+  "caso": "Motor HR15",
   "autor": "Arturo Benjamin Mancilla Choque",
   "nombres": "Arturo Benjamin",
   "apellidos": "Mancilla Choque",
@@ -52,7 +52,7 @@
  },
  {
   "id": 116,
-  "titulo": "13215814",
+  "titulo": "Desarrollo de un sistema de diagnóstico automotriz basado en ESP32 con una aplicación Android para la generacion de señales ckp/cmp, emulación de sensores y el monitoreo de actuadores",
   "caso": null,
   "autor": "Bladimir Ticona Mamani",
   "nombres": "Bladimir",
@@ -69,8 +69,8 @@
  },
  {
   "id": 60,
-  "titulo": "13413158",
-  "caso": null,
+  "titulo": "Diseño y construcción de una estación de diagnóstico didáctico automotriz para el análisis operativo del motor diésel de inyección mecánica",
+  "caso": "Motor diésel Toyota 2C",
   "autor": "David Gonzalo Alcon Padilla",
   "nombres": "David Gonzalo",
   "apellidos": "Alcon Padilla",
@@ -86,7 +86,7 @@
  },
  {
   "id": 100,
-  "titulo": "9922889",
+  "titulo": "Diseño y construcción de un sistema de embrague electrónico de alta resolución para la optimización de la autonomía en conductores con discapacidad motriz inferior",
   "caso": null,
   "autor": "Demetrio Robles Cerezo",
   "nombres": "Demetrio",
@@ -103,7 +103,7 @@
  },
  {
   "id": 107,
-  "titulo": "7008461",
+  "titulo": null,
   "caso": null,
   "autor": "Edgar Colque Auca",
   "nombres": "Edgar",
@@ -120,7 +120,7 @@
  },
  {
   "id": 115,
-  "titulo": "9194895",
+  "titulo": "Desarrrollo e implemenatacion de un sistema inteligente de bloqueo de encendido por deteccion de alcohol en un vehiculo Nissan Tida 2010",
   "caso": null,
   "autor": "Edwin Soldado Chambi",
   "nombres": "Edwin",
@@ -137,7 +137,7 @@
  },
  {
   "id": 80,
-  "titulo": "14907699",
+  "titulo": null,
   "caso": null,
   "autor": "Elvis Hilaquita Aruquipa",
   "nombres": "Elvis",
@@ -154,7 +154,7 @@
  },
  {
   "id": 94,
-  "titulo": "14962521",
+  "titulo": "Construccion de un banco de pruebas para el diagnóstico de inyectores de inyección indirecta MPI",
   "caso": null,
   "autor": "Emerson Quispe Mamani",
   "nombres": "Emerson",
@@ -171,7 +171,7 @@
  },
  {
   "id": 113,
-  "titulo": "13086429",
+  "titulo": "Desarrollo de un banco de diagnóstico para la evaluación del comportamiento de las señales eléctricas de los sensores y actuadores del sistema de inyección electrónica del motor Toyota 1ZZ-FE",
   "caso": null,
   "autor": "Enrique Jorge Mamani Quispe",
   "nombres": "Enrique Jorge",
@@ -188,7 +188,7 @@
  },
  {
   "id": 101,
-  "titulo": "8394826",
+  "titulo": "Construcción de una estación de trabajo para soldadura tipo TIG con sistema de iluminación y extracción de humo aplicada al área automotriz",
   "caso": null,
   "autor": "Ernesto Rodriguez Hilire",
   "nombres": "Ernesto",
@@ -205,7 +205,7 @@
  },
  {
   "id": 102,
-  "titulo": "8263639",
+  "titulo": "Implementación y evaluación de un sistema de inyección de gas natural vehicular (GNV) de tercera generación en un motor diésel common rail D4EA de 2000 CC",
   "caso": null,
   "autor": "Favio Torrez Cussi",
   "nombres": "Favio",
@@ -222,7 +222,7 @@
  },
  {
   "id": 78,
-  "titulo": "9892931",
+  "titulo": "Diseño y elaboración de un instrumento automotriz inteligente para el diagnóstico eléctrico y electrónico del automóvil",
   "caso": null,
   "autor": "Fernando Alexander Flores Aruni",
   "nombres": "Fernando Alexander",
@@ -239,7 +239,7 @@
  },
  {
   "id": 84,
-  "titulo": "7088370",
+  "titulo": "Vehículo didáctico Mitsubishi Pajero JR. En corte para la demostración del motor 4A30 y sus componentes eléctricos",
   "caso": null,
   "autor": "Gabriel Laime Flores",
   "nombres": "Gabriel",
@@ -256,8 +256,8 @@
  },
  {
   "id": 114,
-  "titulo": "13436034",
-  "caso": null,
+  "titulo": "Implementación de un sistema de seguridad electrónico controlado por comando de voz en el arranque y encendido del vehículo",
+  "caso": "Toyota Ipsum modelo 98",
   "autor": "Gabriel Quispe Quispe",
   "nombres": "Gabriel",
   "apellidos": "Quispe Quispe",
@@ -273,7 +273,7 @@
  },
  {
   "id": 91,
-  "titulo": "7088389",
+  "titulo": "Diseño y construcción de una maqueta didáctica de una transmisión transversal Toyota 4X4 con accionamiento estacionario por motor de motocicleta",
   "caso": null,
   "autor": "Guillermo Mario Mollinedo Ticona",
   "nombres": "Guillermo Mario",
@@ -290,8 +290,8 @@
  },
  {
   "id": 69,
-  "titulo": "9936753",
-  "caso": null,
+  "titulo": "Construcción de un vehículo tipo buggy impulsado con un motor de 4 tiempos para desplazamiento en terrenos irregulares",
+  "caso": "Motor Trueno 250CC",
   "autor": "Ismael Chambi Sullka",
   "nombres": "Ismael",
   "apellidos": "Chambi Sullka",
@@ -307,7 +307,7 @@
  },
  {
   "id": 61,
-  "titulo": "6953475",
+  "titulo": null,
   "caso": null,
   "autor": "Ivan Alejo Limachi",
   "nombres": "Ivan",
@@ -324,7 +324,7 @@
  },
  {
   "id": 79,
-  "titulo": "10072557",
+  "titulo": null,
   "caso": null,
   "autor": "Ivan Herrera Mamani",
   "nombres": "Ivan",
@@ -341,8 +341,8 @@
  },
  {
   "id": 117,
-  "titulo": "13025403",
-  "caso": null,
+  "titulo": "Diseño e implementación de un sistema de seguridad vehicular para control centralizado de puertas y encendido usando ESP32 y tecnología NFC",
+  "caso": "Nissan Tiida 2010",
   "autor": "Jhonatan Alexci Ticona Viracocha",
   "nombres": "Jhonatan Alexci",
   "apellidos": "Ticona Viracocha",
@@ -358,8 +358,8 @@
  },
  {
   "id": 67,
-  "titulo": "9238585",
-  "caso": null,
+  "titulo": "Diseño y construcción de un circuito electrónico para el auxilio mecánico por fallas en el sensor app",
+  "caso": "Motor Nissan serie HR",
   "autor": "Jhonn Sebastian Cano Ramos",
   "nombres": "Jhonn Sebastian",
   "apellidos": "Cano Ramos",
@@ -375,8 +375,8 @@
  },
  {
   "id": 63,
-  "titulo": "9084659",
-  "caso": null,
+  "titulo": "Construcción e implementacion de un sistema seguridad en la unidad electrónica del motor para evitar el robo de vehiculos de la ciudad de el Alto",
+  "caso": "Nissan NA 20",
   "autor": "Jose Carlos Ayca Mamani",
   "nombres": "Jose Carlos",
   "apellidos": "Ayca Mamani",
@@ -392,7 +392,7 @@
  },
  {
   "id": 68,
-  "titulo": "9074954",
+  "titulo": "Construccion de un analizador de gases para un motor de motocicleta",
   "caso": null,
   "autor": "Jose David Cari Guarachi",
   "nombres": "Jose David",
@@ -409,7 +409,7 @@
  },
  {
   "id": 62,
-  "titulo": "9969200",
+  "titulo": "Diseño y construcción de un banco de pruebas para el diagnóstico de caudal, presión y hermeticidad en inyectores common rail piezoelectricos",
   "caso": null,
   "autor": "Jose Luis Aruquipa Paxipati",
   "nombres": "Jose Luis",
@@ -426,7 +426,7 @@
  },
  {
   "id": 98,
-  "titulo": "9241482",
+  "titulo": "Construccion de un banco de pruebas para el diagnostico de inyectores de inyeccion directa de gasolina gdi",
   "caso": null,
   "autor": "Jose Manuel Quispe Canaviri",
   "nombres": "Jose Manuel",
@@ -443,7 +443,7 @@
  },
  {
   "id": 111,
-  "titulo": "7069188",
+  "titulo": null,
   "caso": null,
   "autor": "Josue Israel Laura Quisbert",
   "nombres": "Josue Israel",
@@ -460,8 +460,8 @@
  },
  {
   "id": 95,
-  "titulo": "7083542",
-  "caso": null,
+  "titulo": "Construcción de un banco de diagnostico para el monitoreo y simulación de fallas de las señales de entrada y salida del ECM",
+  "caso": "Motor 1NZ-FE Toyota",
   "autor": "Juan Carlos Quispe Apaza",
   "nombres": "Juan Carlos",
   "apellidos": "Quispe Apaza",
@@ -477,7 +477,7 @@
  },
  {
   "id": 108,
-  "titulo": "9094230",
+  "titulo": "Construcción de un banqueador de modulos de control de motor (ECM) con un sistema operativo interactivo",
   "caso": null,
   "autor": "Juan Daniel Escobar Marino",
   "nombres": "Juan Daniel",
@@ -494,8 +494,8 @@
  },
  {
   "id": 93,
-  "titulo": "6907736",
-  "caso": null,
+  "titulo": "Implementación de un sistema didáctico para la programación y clonación de llaves inteligentes mediante el Xhorse key tool lite, utilizando tecnología transponder, aplicado al sistema inmovilizador",
+  "caso": "Nissan AD 2009",
   "autor": "Leonel Richard Ortuño Fernandez",
   "nombres": "Leonel Richard",
   "apellidos": "Ortuño Fernandez",
@@ -511,8 +511,8 @@
  },
  {
   "id": 90,
-  "titulo": "10094251",
-  "caso": null,
+  "titulo": "Construcción e implementación de un banco de pruebas integrado para la ECM mediante el uso del microcontrolador ATMEGA328P para el análisis dinámico del sistema de gestión del motor",
+  "caso": "Nissan AD 2009",
   "autor": "Luis Gustavo Marca Choque",
   "nombres": "Luis Gustavo",
   "apellidos": "Marca Choque",
@@ -528,7 +528,7 @@
  },
  {
   "id": 77,
-  "titulo": "9950856",
+  "titulo": "Implementación de un sistema automatizado en una pluma hidráulica para motores a gasolina",
   "caso": null,
   "autor": "Marco Antonio Contreras Herrera",
   "nombres": "Marco Antonio",
@@ -545,7 +545,7 @@
  },
  {
   "id": 87,
-  "titulo": "13566310",
+  "titulo": "Desarrollo didáctico del sistema de transmisión de un vehículo en corte Mitsubishi Pajero JR",
   "caso": null,
   "autor": "Marcos Mamani Mamani",
   "nombres": "Marcos",
@@ -562,7 +562,7 @@
  },
  {
   "id": 74,
-  "titulo": "9916858",
+  "titulo": "Diseño y construcción de un máquina simuladora de movimiento para el diagnóstico y evaluación del sistema de suspensión delantero tipo macpherson",
   "caso": null,
   "autor": "Marcos Rodrigo Churqui Piza",
   "nombres": "Marcos Rodrigo",
@@ -579,8 +579,8 @@
  },
  {
   "id": 71,
-  "titulo": "13497169",
-  "caso": null,
+  "titulo": "Construcción de un banco de pruebas para la simulación y análisis dinámico del sistema de transmisión integral AWD mediante emulación de señales electrónicas",
+  "caso": "Subaru Forester 2000",
   "autor": "Mauricio Chino Villca",
   "nombres": "Mauricio",
   "apellidos": "Chino Villca",
@@ -596,7 +596,7 @@
  },
  {
   "id": 112,
-  "titulo": "6916470",
+  "titulo": "Construcción de un banco de prueba para el diagnostico electrónico del regulador de contrapresión de escape atr y la válvula wastegate en camiones Volvo FH460",
   "caso": null,
   "autor": "Miguel Angel Laurayza Poma",
   "nombres": "Miguel Angel",
@@ -613,7 +613,7 @@
  },
  {
   "id": 86,
-  "titulo": "13084690",
+  "titulo": "Diseño y construcción de un sistema purificador para la reducción de gases tóxicos en motores de combustión interna con carburador a gasolina",
   "caso": null,
   "autor": "Miguel Lima Cruz",
   "nombres": "Miguel",
@@ -630,8 +630,8 @@
  },
  {
   "id": 104,
-  "titulo": "7359736",
-  "caso": null,
+  "titulo": "Implementación de un sistema didáctico mediante el SM2 pro para la reprogramación del sistema inmovilizador (immo off) orientado al análisis del sistema de seguridad electrónica",
+  "caso": "Nissan AD 2009",
   "autor": "Miguel Vallejos Luna",
   "nombres": "Miguel",
   "apellidos": "Vallejos Luna",
@@ -647,8 +647,8 @@
  },
  {
   "id": 72,
-  "titulo": "11062357",
-  "caso": null,
+  "titulo": "Diseño y construccion de un simulador funcional del motor de combustion por compresion diésel para demostrar el funcionamiento de sus piezas mecanicas",
+  "caso": "Motor de Vehículo Kia Bongo Frontier “Kia J2 – 2.7 L”",
   "autor": "Nelson Choque Mamani",
   "nombres": "Nelson",
   "apellidos": "Choque Mamani",
@@ -664,7 +664,7 @@
  },
  {
   "id": 73,
-  "titulo": "9226073",
+  "titulo": "Construcción de un banco de pruebas de bomba rotativa de inyeccion diésel tipo VE para el diagnostico de inyeccion a diferentes revoluciones del motor",
   "caso": null,
   "autor": "Omar Cristhian Choque Choque",
   "nombres": "Omar Cristhian",
@@ -681,7 +681,7 @@
  },
  {
   "id": 82,
-  "titulo": "11106109",
+  "titulo": "Diseño y construcción de un prototipo de vehículo eléctrico para personas con discapacidad de los miembros inferiores",
   "caso": null,
   "autor": "Oscar Ramiro Huanca Mamani",
   "nombres": "Oscar Ramiro",
@@ -698,7 +698,7 @@
  },
  {
   "id": 105,
-  "titulo": "10092658",
+  "titulo": "Ensamblaje de una ECU programable basada en ATMEGA2560 para el arranque y análisis de señales electrónicas en un motor Toyota con encendido dis",
   "caso": null,
   "autor": "Randy Denilson Villavicencio Bernal",
   "nombres": "Randy Denilson",
@@ -715,7 +715,7 @@
  },
  {
   "id": 88,
-  "titulo": "9985119",
+  "titulo": null,
   "caso": null,
   "autor": "Rene Mamani Condori",
   "nombres": "Rene",
@@ -732,7 +732,7 @@
  },
  {
   "id": 66,
-  "titulo": "8398727",
+  "titulo": "Implementación del proceso de soldadura MIG - MAG como alternativa tecnologica en la reconstrucción de sistemas de escape, carrocerias y otros componentes automotrices",
   "caso": null,
   "autor": "Reyner Callisaya Mejia",
   "nombres": "Reyner",
@@ -749,7 +749,7 @@
  },
  {
   "id": 85,
-  "titulo": "9931624",
+  "titulo": "Desarrollo de un banco de diagnóstico para simulación de funcionamiento fallas y pruebas eléctricas en sensores y actuadores del sistema de inyección electrónica del Chevrolet N300 move 2020",
   "caso": null,
   "autor": "Roger Angel Lequipe Layme",
   "nombres": "Roger Angel",
@@ -766,8 +766,8 @@
  },
  {
   "id": 81,
-  "titulo": "9950453",
-  "caso": null,
+  "titulo": "Implementacion de un sistema electronico de seguridad y bloqueo de encendido con reconocimiento facial controlado con un dispositivo movil",
+  "caso": "APV Suzuki 2018",
   "autor": "Roger Huacoto Quispe",
   "nombres": "Roger",
   "apellidos": "Huacoto Quispe",
@@ -783,7 +783,7 @@
  },
  {
   "id": 110,
-  "titulo": "9231251",
+  "titulo": "Implementación de un modulo de control basado en la tecnología auto start-stop para el ahorro energético del combustible en motocicletas delivery",
   "caso": null,
   "autor": "Roly Henrry Huaycho Chavez",
   "nombres": "Roly Henrry",
@@ -800,8 +800,8 @@
  },
  {
   "id": 118,
-  "titulo": "9191420",
-  "caso": null,
+  "titulo": "Diseño y construccion de un equipo para diagnostico de sensores, actuadores y unidades electronicas automotrices con control movil",
+  "caso": "Toyota de sensor hall",
   "autor": "Ronald Tintaya Quisbert",
   "nombres": "Ronald",
   "apellidos": "Tintaya Quisbert",
@@ -817,8 +817,8 @@
  },
  {
   "id": 103,
-  "titulo": "8398472",
-  "caso": null,
+  "titulo": "Diseño y construcción de un banco de pruebas para sistema de frenos neumáticos",
+  "caso": "Para vehículos pesados",
   "autor": "Ruben Eliezer Torrez Lovera",
   "nombres": "Ruben Eliezer",
   "apellidos": "Torrez Lovera",
@@ -834,8 +834,8 @@
  },
  {
   "id": 99,
-  "titulo": "8378255",
-  "caso": null,
+  "titulo": "Implementación de un combustible alternativo (GNV) quinta generación con un sistema secuencial Landi Renzo",
+  "caso": "Motor Toyota 1ZZ 1800 CC",
   "autor": "Ruben Isser Ramos Choque",
   "nombres": "Ruben Isser",
   "apellidos": "Ramos Choque",
@@ -851,8 +851,8 @@
  },
  {
   "id": 83,
-  "titulo": "13626914",
-  "caso": null,
+  "titulo": "Diseño y construccion de un sistema de simulacion para la evaluacion del funcionamiento de bombas lineales de inyeccion diésel",
+  "caso": "Bomba tipo P Bosch",
   "autor": "Samuel Huarca Quispe",
   "nombres": "Samuel",
   "apellidos": "Huarca Quispe",
@@ -868,7 +868,7 @@
  },
  {
   "id": 70,
-  "titulo": "7074385",
+  "titulo": "Implementación de un vehículo didáctico Mitsubishi Pajero JR en corte para la demostración del funcionamiento del sistema de suspensión",
   "caso": null,
   "autor": "Teodocio Chambilla Aliaga",
   "nombres": "Teodocio",
@@ -885,7 +885,7 @@
  },
  {
   "id": 96,
-  "titulo": "13380575",
+  "titulo": "Vehículo Mitsubishi Pajero JR en corte para la demostración del sistema eléctrico automotriz",
   "caso": null,
   "autor": "Tito Quispe Prado",
   "nombres": "Tito",
@@ -902,7 +902,7 @@
  },
  {
   "id": 76,
-  "titulo": "8415889",
+  "titulo": "Diseño y construcción de una rampa para motocicletas con sistema de suspensión y accionamiento neumático empleando software de diseño asistido cad",
   "caso": null,
   "autor": "Walter Condori Laura",
   "nombres": "Walter",
@@ -919,7 +919,7 @@
  },
  {
   "id": 106,
-  "titulo": "6902107",
+  "titulo": null,
   "caso": null,
   "autor": "Wilfredo Chino Flores",
   "nombres": "Wilfredo",
@@ -936,8 +936,8 @@
  },
  {
   "id": 97,
-  "titulo": "9949223",
-  "caso": null,
+  "titulo": "Construcción de un banco de pruebas para el diagnostico de unidades de control electrónico con software de codigo abierto",
+  "caso": "Toyota 5E-FE, ECU",
   "autor": "William Quispe Mujica",
   "nombres": "William",
   "apellidos": "Quispe Mujica",
@@ -953,8 +953,8 @@
  },
  {
   "id": 75,
-  "titulo": "10035116",
-  "caso": null,
+  "titulo": "Implementación de un sistema de verificación de la red de comunicación CAN mediante el uso del escáner y Godiag GT100 para la optimización del diagnóstico electrónico automotriz",
+  "caso": "Nissan AD 2009",
   "autor": "Williams Conde Orellana",
   "nombres": "Williams",
   "apellidos": "Conde Orellana",
@@ -970,7 +970,7 @@
  },
  {
   "id": 109,
-  "titulo": "12640563",
+  "titulo": "Construcción de un banco de pruebas para el diagnóstico y análisis del sistema de suspensión electroneumática con gestión de control electrónico del Volvo fh modelo 2000",
   "caso": null,
   "autor": "Wilmer Huanca Roman",
   "nombres": "Wilmer",

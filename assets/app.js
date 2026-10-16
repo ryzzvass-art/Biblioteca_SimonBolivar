@@ -64,7 +64,7 @@
     $('#grid').innerHTML = list.length ? list.map(p => `
       <button class="card" data-id="${p.id}">
         <span class="tag ${p.carrera==='Autotrónica'?'auto':''}">${esc(p.carrera)}</span>
-        <h3>${esc(p.titulo)}</h3>
+        <h3>${esc(p.titulo || 'Título no disponible')}</h3>
         ${p.caso ? `<div class="caso">Caso: ${esc(p.caso)}</div>` : ''}
         <div class="autor">${esc(p.autor)}</div>
         ${palabras.length ? fragmento(p, palabras) : ''}
@@ -81,7 +81,7 @@
     const row = (k,v) => v ? `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>` : '';
     $('#side').innerHTML = `
       <span class="tag ${p.carrera==='Autotrónica'?'auto':''}">${esc(p.carrera)}</span>
-      <h2>${esc(p.titulo)}</h2>
+      <h2>${esc(p.titulo || 'Título no disponible')}</h2>
       <dl>${row('Caso de aplicación',p.caso)}${row('Estudiante',p.autor)}${row('Nivel',p.nivel)}
       ${row('Fecha de defensa',`${p.dia}, ${p.fecha}`)}${row('Horario',p.inicio&&p.fin?`${p.inicio} – ${p.fin}`:'')}
       ${row('Lugar',`${p.ciudad}, ${p.departamento}`)}${row('Proyecto Nº',p.id)}</dl>`;
