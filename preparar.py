@@ -8,11 +8,17 @@ Uso (desde la carpeta del sitio):
 - Recorre PROYECTOS/<NOMBRE DEL ESTUDIANTE>/ y toma SOLO el .pdf.
 - Copia cada PDF a pdfs/<nº>-<nombre>.pdf (nombre limpio, sin espacios ni tildes).
 - Escribe data/proyectos.json. Informa qué proyectos quedaron sin PDF.
-Requiere: pip install openpyxl
+- NUEVO: extrae el texto de cada PDF y escribe data/busqueda.json (id -> texto normalizado)
+  para poder buscar por palabras dentro del proyecto.
+Requiere: pip install openpyxl pypdf
 """
 import sys, re, json, shutil, unicodedata
 from pathlib import Path
 import openpyxl
+try:
+    from pypdf import PdfReader
+except ImportError:
+    PdfReader = None
 
 ACRON = {"MIG","MAG","ESP32","CKP","CMP","NFC","ECU","ABS","CAN","GLP","GNC","OBD","USB","LED","PWM","EQ","NA","TIG",
          "GPS","GSM","IOT","PLC","CAN-BUS","DPF","EGR","TPS","MAP","MAF","CVT","ARDUINO","AC","DC","CC","II","III","IV","SRS","EPS","ADN","GNV","ECM","MPI","IMM","VE","SM2","BYD","APV","HR","AD","CC","JR","SCR","VVT","VVTI","DOHC","SOHC","4X4","4WD","AWD","GLP","IC","TDI","CRDI","HDI","TCU","BCM","ESP","EFI","MPFI","TBI","RPM"}
@@ -27,6 +33,18 @@ def sin_acentos(s): return "".join(c for c in unicodedata.normalize("NFD", s) if
 def limpio(s): return re.sub(r"\s+", " ", str(s or "")).strip()
 def clave(s): return sorted(re.findall(r"[A-Z0-9]+", sin_acentos(s).upper()))
 def slug(s): return re.sub(r"[^a-z0-9]+","-",sin_acentos(s).lower()).strip("-")
+
+def normaliza(s):
+    """minúsculas, sin tildes, solo letras/números/espacios (para búsqueda)"""
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9ñ ]+", " ", sin_acentos(str(s or "")).lower())).strip()
+
+def texto_pdf(ruta):
+    if PdfReader is None: return ""
+    try:
+        r = PdfReader(str(ruta))
+        return normaliza(" ".join((pg.extract_text() or "") for pg in r.pages))
+    except Exception as e:
+        print("  ERROR leyendo", ruta, e); return ""
 
 def nombre(s): return " ".join(w.capitalize() for w in limpio(s).lower().split())
 
@@ -101,6 +119,17 @@ def main():
     lista.sort(key=lambda p: sin_acentos(p["autor"]))
     (base/"data").mkdir(exist_ok=True)
     (base/"data/proyectos.json").write_text(json.dumps(lista, ensure_ascii=False, indent=1), encoding="utf-8")
+    # Índice de búsqueda: texto completo de cada PDF
+    if PdfReader is None: print("AVISO: instale pypdf (pip install pypdf) para buscar dentro de los PDF")
+    indice, sin_texto = {}, []
+    for p in lista:
+        base_txt = normaliza(" ".join(filter(None, [p["titulo"], p["caso"], p["autor"], p["carrera"]])))
+        cuerpo = texto_pdf(base/p["pdf"]) if p["pdf"] else ""
+        if p["pdf"] and len(cuerpo) < 200: sin_texto.append(p["autor"])
+        indice[p["id"]] = (base_txt + " " + cuerpo).strip()
+    (base/"data/busqueda.json").write_text(json.dumps(indice, ensure_ascii=False), encoding="utf-8")
+    print(f"Índice de búsqueda: {(base/'data/busqueda.json').stat().st_size/1e6:.1f} MB")
+    for a in sin_texto: print("  PDF SIN TEXTO (escaneado, necesita OCR):", a)
     print(f"{len(lista)} proyectos · {sum(1 for p in lista if p['pdf'])} con PDF")
     for p in lista:
         if not p["pdf"]: print("  SIN PDF:", p["autor"])
