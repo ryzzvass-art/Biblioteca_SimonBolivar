@@ -4,29 +4,61 @@
   const norm = s => String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
   const MES = {enero:0,febrero:1,marzo:2,abril:3,mayo:4,junio:5,julio:6,agosto:7,septiembre:8,octubre:9,noviembre:10,diciembre:11};
   const fechaNum = p => { const m = norm(p.fecha).match(/(\d+)\s+de\s+(\w+)\s+de\s+(\d+)/); return m ? new Date(+m[3], MES[m[2]], +m[1]).getTime() : 0; };
-
+ 
   let DATA = [], carrera = 'Todas';
   const cg = $('#cg'); addEventListener('mousemove', e => { cg.style.left = e.clientX+'px'; cg.style.top = e.clientY+'px'; });
-
+ 
+  /* ---------- Índice de texto completo (data/busqueda.json) ---------- */
+  let idxPromise = null, idxListo = false;
+  function cargarIndice() {
+    if (!idxPromise) {
+      idxPromise = fetch('data/busqueda.json').then(r => r.json()).then(ix => {
+        DATA.forEach(p => { p._t = ix[p.id] || ''; });
+        idxListo = true;
+      }).catch(err => { console.warn('Sin índice de búsqueda en contenido:', err); idxListo = false; });
+    }
+    return idxPromise;
+  }
+ 
   fetch('data/proyectos.json').then(r => r.json()).then(d => {
-    DATA = d.map(p => ({...p, _s: norm([p.titulo,p.caso,p.autor,p.carrera,p.fecha].join(' '))}));
+    DATA = d.map(p => ({...p, _t: '', _s: norm([p.titulo,p.caso,p.autor,p.carrera,p.fecha].join(' '))}));
     const cars = ['Todas', ...new Set(DATA.map(p => p.carrera))];
     $('#chips').innerHTML = cars.map(c => `<button class="chip ${c===carrera?'on':''}" data-c="${esc(c)}">${esc(c)}</button>`).join('');
     render();
+    cargarIndice();   // se precarga en segundo plano para que la búsqueda sea inmediata
   }).catch(() => { $('#grid').innerHTML = '<div class="empty">No se pudieron cargar los proyectos.</div>'; });
-
+ 
   $('#chips').addEventListener('click', e => {
     const b = e.target.closest('.chip'); if (!b) return;
     carrera = b.dataset.c;
     document.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c === b));
     render();
   });
-  $('#q').addEventListener('input', render);
+ 
+  let deb;
+  $('#q').addEventListener('input', () => {
+    clearTimeout(deb);
+    deb = setTimeout(async () => {
+      if ($('#q').value.trim() && !idxListo) { $('#count').textContent = 'Buscando en el contenido de los proyectos…'; await cargarIndice(); }
+      render();
+    }, 150);
+  });
   $('#sort').addEventListener('change', render);
-
+ 
+  // Fragmento del texto donde aparece la primera palabra que NO está en título/autor
+  function fragmento(p, palabras) {
+    if (!p._t) return '';
+    const w = palabras.find(w => !p._s.includes(w)); if (!w) return '';
+    const i = p._t.indexOf(w); if (i < 0) return '';
+    const a = Math.max(0, i - 50), b = Math.min(p._t.length, i + w.length + 70);
+    const pre = esc(p._t.slice(a, i)), mid = esc(p._t.slice(i, i + w.length)), post = esc(p._t.slice(i + w.length, b));
+    return `<div class="snip" style="font-size:.78rem;opacity:.75;margin:.4rem 0;line-height:1.35">En el documento: …${pre}<mark style="background:#d4af3755;color:inherit;padding:0 2px">${mid}</mark>${post}…</div>`;
+  }
+ 
   function render() {
     const q = norm($('#q').value.trim()), by = $('#sort').value;
-    const list = DATA.filter(p => (carrera==='Todas' || p.carrera===carrera) && q.split(/\s+/).every(w => p._s.includes(w)))
+    const palabras = q.split(/\s+/).filter(Boolean);
+    const list = DATA.filter(p => (carrera==='Todas' || p.carrera===carrera) && palabras.every(w => (p._s.includes(w) || p._t.includes(w))))
       .sort((a,b) => by==='fecha' ? fechaNum(a)-fechaNum(b) : norm(a[by]).localeCompare(norm(b[by])));
     $('#count').innerHTML = `<b>${list.length}</b> ${list.length===1?'proyecto':'proyectos'}`;
     $('#grid').innerHTML = list.length ? list.map(p => `
@@ -35,12 +67,13 @@
         <h3>${esc(p.titulo)}</h3>
         ${p.caso ? `<div class="caso">Caso: ${esc(p.caso)}</div>` : ''}
         <div class="autor">${esc(p.autor)}</div>
+        ${palabras.length ? fragmento(p, palabras) : ''}
         <div class="meta"><span>${esc(p.fecha)}</span><span class="read">Leer →</span></div>
         <span class="num">${String(p.id).padStart(2,'0')}</span>
       </button>`).join('') : '<div class="empty">Ningún proyecto coincide con su búsqueda.</div>';
   }
   $('#grid').addEventListener('click', e => { const c = e.target.closest('.card'); if (c) open(+c.dataset.id); });
-
+ 
   /* ---------- Modal + visor PDF (solo lectura) ---------- */
   let token = 0;
   function open(id) {
@@ -58,14 +91,14 @@
   function closeModal() { token++; $('#modal').classList.remove('open'); document.body.style.overflow = ''; $('#viewer').innerHTML = ''; }
   $('#close').onclick = closeModal;
   $('#modal').addEventListener('mousedown', e => { if (e.target.id === 'modal') closeModal(); });
-
+ 
   async function viewPDF(p) {
     const v = $('#viewer'), my = ++token; v.scrollTop = 0;
     if (!p.pdf) { v.innerHTML = '<div class="vmsg"><b>Documento no disponible</b>El PDF de este proyecto aún no ha sido publicado.</div>'; return; }
     v.innerHTML = '<div class="vmsg">Cargando documento…</div>';
     try {
-      pdfjsLib.GlobalWorkerOptions.workerSrc = new URL('assets/vendor/pdf.worker.min.js', location.href).href;
       if (typeof pdfjsLib === 'undefined') throw new Error('No se cargó el visor (assets/vendor/pdf.min.js)');
+      pdfjsLib.GlobalWorkerOptions.workerSrc = new URL('assets/vendor/pdf.worker.min.js', location.href).href;
       const pdf = await pdfjsLib.getDocument({url: new URL(p.pdf, location.href).href, isEvalSupported: false}).promise;
       if (my !== token) return;
       v.innerHTML = `<div class="vbar"><span id="pgi">${pdf.numPages} páginas · solo lectura</span></div><div class="pages" id="pages"></div>`;
@@ -85,7 +118,7 @@
       if (my === token) v.innerHTML = `<div class="vmsg"><b>No se pudo abrir el documento</b>${esc(err && err.message || err)}<br><small>${esc(p.pdf)}</small></div>`;
     }
   }
-
+ 
   /* ---------- Disuasión de descarga / impresión ---------- */
   $('#modal').addEventListener('contextmenu', e => e.preventDefault());
   $('#modal').addEventListener('dragstart', e => e.preventDefault());

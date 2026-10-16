@@ -1,10 +1,10 @@
-#!/usr/bin/env python3
+
 """
 Genera data/proyectos.json a partir del Excel y enlaza cada proyecto con su PDF.
-
+ 
 Uso (desde la carpeta del sitio):
     python preparar.py "RUTA\\ACTAS_DE_DEFENSA_DE_GRADO.xlsx" "RUTA\\BibliotecaProyetos\\PROYECTOS"
-
+ 
 - Recorre PROYECTOS/<NOMBRE DEL ESTUDIANTE>/ y toma SOLO el .pdf.
 - Copia cada PDF a pdfs/<nº>-<nombre>.pdf (nombre limpio, sin espacios ni tildes).
 - Escribe data/proyectos.json. Informa qué proyectos quedaron sin PDF.
@@ -19,7 +19,7 @@ try:
     from pypdf import PdfReader
 except ImportError:
     PdfReader = None
-
+ 
 ACRON = {"MIG","MAG","ESP32","CKP","CMP","NFC","ECU","ABS","CAN","GLP","GNC","OBD","USB","LED","PWM","EQ","NA","TIG",
          "GPS","GSM","IOT","PLC","CAN-BUS","DPF","EGR","TPS","MAP","MAF","CVT","ARDUINO","AC","DC","CC","II","III","IV","SRS","EPS","ADN","GNV","ECM","MPI","IMM","VE","SM2","BYD","APV","HR","AD","CC","JR","SCR","VVT","VVTI","DOHC","SOHC","4X4","4WD","AWD","GLP","IC","TDI","CRDI","HDI","TCU","BCM","ESP","EFI","MPFI","TBI","RPM"}
 PROPIOS = {"toyota":"Toyota","nissan":"Nissan","suzuki":"Suzuki","hyundai":"Hyundai","kia":"Kia","mazda":"Mazda","honda":"Honda",
@@ -28,16 +28,16 @@ PROPIOS = {"toyota":"Toyota","nissan":"Nissan","suzuki":"Suzuki","hyundai":"Hyun
            "denso":"Denso","delphi":"Delphi","hino":"Hino","isuzu":"Isuzu","mercedes":"Mercedes","benz":"Benz","volvo":"Volvo","scania":"Scania",
            "wifi":"Wi-Fi","bluetooth":"Bluetooth","diesel":"diésel","pajero":"Pajero","landi":"Landi","renzo":"Renzo","forester":"Forester","subaru":"Subaru","mitsubishi":"Mitsubishi","xhorse":"Xhorse","godiag":"Godiag","trueno":"Trueno","buggy":"buggy","hr15":"HR15"}
 MINUS = {"de","del","la","las","el","los","y","e","o","u","en","con","para","por","a","al","un","una","que","su","sus","sobre","como","entre","mediante"}
-
+ 
 def sin_acentos(s): return "".join(c for c in unicodedata.normalize("NFD", s) if unicodedata.category(c) != "Mn")
 def limpio(s): return re.sub(r"\s+", " ", str(s or "")).strip()
 def clave(s): return sorted(re.findall(r"[A-Z0-9]+", sin_acentos(s).upper()))
 def slug(s): return re.sub(r"[^a-z0-9]+","-",sin_acentos(s).lower()).strip("-")
-
+ 
 def normaliza(s):
     """minúsculas, sin tildes, solo letras/números/espacios (para búsqueda)"""
     return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9ñ ]+", " ", sin_acentos(str(s or "")).lower())).strip()
-
+ 
 def texto_pdf(ruta):
     if PdfReader is None: return ""
     try:
@@ -45,9 +45,9 @@ def texto_pdf(ruta):
         return normaliza(" ".join((pg.extract_text() or "") for pg in r.pages))
     except Exception as e:
         print("  ERROR leyendo", ruta, e); return ""
-
+ 
 def nombre(s): return " ".join(w.capitalize() for w in limpio(s).lower().split())
-
+ 
 def titulo(s):
     s = limpio(s)
     if not s: return s
@@ -69,7 +69,7 @@ def titulo(s):
     t = "".join(out)
     t = re.sub(r"\(\s*caso\b", "(Caso", t, flags=re.I)
     return t
-
+ 
 def main():
     if len(sys.argv) < 2: sys.exit(__doc__)
     xlsx = Path(sys.argv[1]); root = Path(sys.argv[2]) if len(sys.argv) > 2 else None
@@ -136,3 +136,4 @@ def main():
     for nom in carpetas:
         if nom not in usados: print("  CARPETA SIN PROYECTO EN EXCEL:", nom)
 if __name__ == "__main__": main()
+ 
